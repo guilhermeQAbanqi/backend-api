@@ -7,6 +7,12 @@ const dataSchema = new mongoose.Schema({
     age: {
         type: Number
     },
+    email: {
+        type: String
+    },
+    password: {
+        type: String
+    }
 })
 
 module.exports = mongoose.model('Data', dataSchema)
