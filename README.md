@@ -1,6 +1,6 @@
 # crud-user-registration
 
-COMO COMEÇAR:
+## COMO COMEÇAR:
 ```sh
 npm install
 
