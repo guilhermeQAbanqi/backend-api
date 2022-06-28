@@ -4,10 +4,12 @@ const router = express.Router();
 
 
 //Post
-router.post('/post', async (req, res) => {
+router.post('/user', async (req, res) => {
     const data = new User({
         name: req.body.name,
-        age: req.body.age
+        age: req.body.age,
+        email: req.body.email,
+        password: req.body.password
     })
 
     try {
@@ -20,7 +22,7 @@ router.post('/post', async (req, res) => {
 })
 
 //Get all Users
-router.get('/getAll', async (req, res) => {
+router.get('/user', async (req, res) => {
     try {
         const data = await User.find();
         res.json(data)
@@ -31,7 +33,7 @@ router.get('/getAll', async (req, res) => {
 })
 
 //Get by Id method
-router.get('/getOne/:id', async (req, res) => {
+router.get('/user/:id', async (req, res) => {
     try {
         const data = await User.findById(req.params.id);
         res.json(data)
@@ -42,7 +44,7 @@ router.get('/getOne/:id', async (req, res) => {
 })
 
 //Update by ID Method
-router.put('/update/:id', async (req, res) => {
+router.put('/user/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const updatedData = req.body;
@@ -60,7 +62,7 @@ router.put('/update/:id', async (req, res) => {
 })
 
 //Delete by ID Method
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/user/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const data = await User.findByIdAndDelete(id)
@@ -71,7 +73,7 @@ router.delete('/delete/:id', async (req, res) => {
     }
 })
 
-router.delete('/deleteAll', async (req, res) => {
+router.delete('/user', async (req, res) => {
     try {
         const data = await User.deleteMany();
         res.json(data)
