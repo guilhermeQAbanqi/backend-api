@@ -1,9 +1,15 @@
 const http = require("http");
-const app = require("./app");
-const server = http.createServer(app);
+const create_user = require("./routes/create_user");
+const login = require("./routes/login")
+const server = http.createServer(create_user);
 const bp = require('body-parser')
-app.use(bp.json())
-app.use(bp.urlencoded({ extended: true }))
+
+create_user.use(bp.json())
+create_user.use(bp.urlencoded({ extended: true }))
+
+login.use(bp.json())
+login.use(bp.urlencoded({ extended: true }))
+
 require("dotenv").config();
 
 const { API_PORT } = process.env;
